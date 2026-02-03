@@ -1,10 +1,17 @@
 import "dotenv/config";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const apiKey = process.env.GEMINI_API_KEY?.trim();
+if (!apiKey) {
+  throw new Error(
+    "Missing GEMINI_API_KEY. Set it in backend/.env (e.g. GEMINI_API_KEY=...) and restart the server."
+  );
+}
+
+const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash", // fast + good for chat/emotions
+  model: "gemini-2.5-flash-lite", // fast + good for chat/emotions
   systemInstruction: `
 You are a kind, emotionally supportive AI friend.
 You help users with:
