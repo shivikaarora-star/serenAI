@@ -99,7 +99,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
             </ul>
 
             <div className="sign">
-                <p>By ApnaCollege &hearts;</p>
+                <p>By Shivika Arora</p>
             </div>
         </section>
     )
