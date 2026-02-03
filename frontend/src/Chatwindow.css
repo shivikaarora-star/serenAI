@@ -1,0 +1,230 @@
+.chatWindow {
+    /* background-color: var(--bg-color); */
+    background: linear-gradient(-45deg, #343541, #2b2c34, #1f2023, #343541);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    /* Prevent body scroll */
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* navbar */
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    flex-shrink: 0;
+    /* Don't shrink navbar */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-color);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+}
+
+.menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+    }
+}
+
+.model-select {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.model-select:hover {
+    background-color: var(--hover-bg);
+}
+
+.userIconDiv {
+    cursor: pointer;
+    padding: 4px;
+}
+
+.userIcon {
+    background-color: #10a37f;
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+}
+
+/* Chat Input Area */
+.chatInput {
+    width: 100%;
+    padding: 24px;
+    background: rgba(52, 53, 65, 0.7);
+    /* Transparent background */
+    backdrop-filter: blur(10px);
+    /* Glass blur effect */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputBox {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--input-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-end;
+    /* Align bottom to handle growing text */
+    padding: 14px 48px 14px 16px;
+    /* Right padding for button */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.inputBox:focus-within {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0;
+    max-height: 200px;
+    resize: none;
+    font-family: inherit;
+    box-shadow: none;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#submit {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    /* Aligned visually */
+    background-color: transparent;
+    /* Changed from green to match new aesthetic unless active */
+    color: var(--text-secondary);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Active state for submit button (when input has text - would need JS for full effect, but handling hover) */
+#submit:hover {
+    background-color: #19c37d;
+    color: white;
+}
+
+/* Optional: disabled look if helpful */
+#submit.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.info {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 2px;
+}
+
+/* Dropdown */
+.dropDown {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    background-color: #202123;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px;
+    z-index: 1000;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.dropDownItem {
+    padding: 10px 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropDownItem:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Chat Content Area */
+/* Assuming usage of Chat.jsx, these might drift into Chat.css, but relevant here conceptually */
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+}

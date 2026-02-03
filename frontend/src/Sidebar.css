@@ -1,0 +1,145 @@
+.sidebar {
+    background-color: var(--sidebar-bg);
+    color: var(--text-primary);
+    height: 100vh;
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.2, 0.0, 0.2, 1);
+    /* fast ease-in-out */
+    position: relative;
+    z-index: 100;
+    will-change: transform;
+}
+
+/* Mobile Sidebar Styling */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 80%;
+        max-width: 320px;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(52, 53, 65, 0.7);
+        /* Match theme opacity */
+        backdrop-filter: blur(2px);
+        z-index: 99;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.new-chat-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    gap: 12px;
+    transition: background-color 0.2s;
+    width: calc(100% - 20px);
+    /* Full width minus margin */
+}
+
+.new-chat-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.new-chat-btn span {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.logo {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.history {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.history li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 12px;
+    margin-bottom: 4px;
+    font-size: 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-primary);
+}
+
+.history li:hover,
+.history li.highlighted {
+    background-color: var(--hover-bg);
+}
+
+.history li i {
+    color: var(--text-secondary);
+}
+
+.delete-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    margin-left: 10px;
+    opacity: 1;
+    /* Always visible */
+}
+
+.history li:hover .delete-icon {
+    color: var(--text-primary);
+}
+
+.delete-icon:hover {
+    color: #ef4444 !important;
+    /* Red on hover */
+}
+
+.sign {
+    padding: 16px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
+}
