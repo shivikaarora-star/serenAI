@@ -65,7 +65,7 @@ function ChatWindow({ toggleSidebar }) {
                     <i className="fa-solid fa-bars"></i>
                 </button>
                 <div className="model-select">
-                    <span>SigmaGPT <i className="fa-solid fa-chevron-down"></i></span>
+                    <span> serenAI <i className="fa-solid fa-chevron-down"></i></span>
                 </div>
                 <div className="userIconDiv" onClick={handleProfileClick}>
                     <span className="userIcon">U</span>
@@ -94,7 +94,7 @@ function ChatWindow({ toggleSidebar }) {
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
                 </div>
                 <p className="info">
-                    SigmaGPT can make mistakes. Check important info. See Cookie Preferences.
+                    serenAIcan make mistakes. Check important info. See Cookie Preferences.
                 </p>
             </div>
         </div>
